@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         //     $view->with('menus', Menu::smenu()); 
         // }); 
         
-        view()->composer('layout', function($view) {
+        view()->composer('layouts.main', function($view) {
             $view->with('menus', Menu::smenu()); 
         }); 
     }

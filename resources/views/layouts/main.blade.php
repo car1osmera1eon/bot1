@@ -518,22 +518,6 @@
             <!--===================================================-->
             <nav id="mainnav-container">
                 <div id="mainnav">
-
-
-                    <!--OPTIONAL : ADD YOUR LOGO TO THE NAVIGATION-->
-                    <!--It will only appear on small screen devices.-->
-                    <!--================================
-                    <div class="mainnav-brand">
-                        <a href="index.html" class="brand">
-                            <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
-                            <span class="brand-text">Nifty</span>
-                        </a>
-                        <a href="#" class="mainnav-toggle"><i class="pci-cross pci-circle icon-lg"></i></a>
-                    </div>
-                    -->
-
-
-
                     <!--Menu-->
                     <!--================================-->
                     <div id="mainnav-menu-wrap">
@@ -583,10 +567,10 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="col-xs-3" data-content="Mensajes">
+                                        <li class="col-xs-3" data-content="Sitio web">
                                             <a class="shortcut-grid" href="#">
-                                                <div class="icon-wrap icon-wrap-sm icon-circle bg-warning">
-                                                <i class="pli-speech-bubble-3"></i>
+                                                <div class="icon-wrap icon-wrap-sm icon-circle bg-primary">
+                                                <i class="psi-internet-explorer"></i>
                                                 </div>
                                             </a>
                                         </li>
@@ -612,271 +596,9 @@
                                 </div>
                                 <!--================================-->
                                 <!--End shortcut buttons-->
-
-
-                                <ul id="mainnav-menu" class="list-group"> 
-                                    @php
-                                    //echo "<pre>"; print_r($menus); echo "</pre>";   
-                                    @endphp
-                                    @foreach ($menus as $sistemas) 
-                                        <li class="list-header"><i class="fa {{ $sistemas['icono'] }}"></i> &nbsp; <strong>{{ $sistemas['nom_sistema'] }}</strong></li>
-                                        @foreach ($sistemas[$sistemas['sistema_id']] as $modulos) 
-
-                                        <!--Menu list item-->
-                                        <li class="active-sub">
-                                            <a href="#">
-                                                <i class="{{$modulos['icono']}}"></i>
-                                                <span class="menu-title">{{$modulos['nom_modulo']}}</span>
-                                                <i class="arrow"></i>
-                                            </a>
-                            
-                                            <!--Submenu-->
-                                            <ul class="collapse in">
-                                                @foreach ($modulos[$modulos['modulo_id']] as $sub)
-                                                    @if(isset($sub[$sub['submodulo_id']]) and count($sub[$sub['submodulo_id']])==0)
-                                                        <li @if(Session::get('submodulo')==$sub['submodulo_id']) class="active-link" @endif ><a href="{{route($sub['link'])}}">{{$sub['nom_submodulo']}} </a></li>
-                                                    @else
-                                                    <li>
-                                                        <a @if(Session::get('submodulo')==$sub['submodulo_id']) aria-expanded="true" @endif href="#">{{$sub['nom_submodulo']}}<i class="arrow"></i></a>
-        
-                                                        <!--Submenu-->
-                                                        <ul @if(Session::get('submodulo')==$sub['submodulo_id']) class="collapse in" aria-expanded="true" 
-                                                            @else class="collapse" @endif >
-                                                            @foreach ($sub[$sub['submodulo_id']] as $sub2)
-                                                                <li @if(Session::get('submodulo2')==$sub2['submodulo2_id']) class="active-link" @endif ><a href="{{ $sub2['link']}}">{{ $sub2['nom_submodulo2']}}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </li>
-                                                    @endif 
-                                                    
-
-                                                @endforeach
-                                            </ul>
-                                        </li>
-
-                                        @endforeach
-                                    @endforeach
-                                    
-						            <!--Category name-->
-						            <li class="list-header">Link List</li>
-						
-						            <!--Menu list item-->
-						            <li class="active-link">
-						                <a href="#">
-						                    <i class="pli-favorite-window"></i>
-						                    <span class="menu-title">Favoritos</span>
-						                </a>
-						            </li>
-						
-						            <!--Menu list item-->
-						            <li>
-						                <a href="#">
-						                    <i class="pli-mail-love"></i>
-						                    <span class="menu-title">
-												<strong>Bolder</strong>
-											</span>
-						                </a>
-						            </li>
-						
-						            <!--Menu list item-->
-						            <li>
-						                <a href="#">
-						                    <i class="pli-gamepad-2"></i>
-						                    <span class="menu-title">
-												With label
-												<span class="label label-success pull-right">New</span>
-											</span>
-						                </a>
-						            </li>
-						
-						            <!--Menu list item-->
-						            <li>
-						                <a href="#">
-						                    <i class="pli-usb"></i>
-						                    <span class="menu-title">
-												With badge
-												<span class="pull-right badge badge-purple">7</span>
-											</span>
-						                </a>
-						            </li>
-						
-						            <li class="list-divider"></li>
-						
-						            <!--Category name-->
-						            <li class="list-header">Submenus</li>
-						
-						            <!--Menu list item-->
-						            <li class="active-sub">
-						                <a href="#">
-						                    <i class="pli-mouse-3"></i>
-						                    <span class="menu-title">Active State</span>
-											<i class="arrow"></i>
-						                </a>
-						
-						                <!--Submenu-->
-						                <ul class="collapse in">
-						                    <li><a href="#">Link</a></li>
-											<li class="active-link"><a href="#">Active link</a></li>
-											<li><a href="#">Another link</a></li>
-											<li><a href="#">Some else here</a></li>
-											<li class="list-divider"></li>
-											<li><a href="#">Separate link</a></li>
-											
-						                </ul>
-						            </li>
-						
-						            <!--Menu list item-->
-						            <li>
-						                <a href="#">
-						                    <i class="pli-hipster-headphones"></i>
-						                    <span class="menu-title">
-												<strong>Bolder</strong>
-											</span>
-											<i class="arrow"></i>
-						                </a>
-						
-						                <!--Submenu-->
-						                <ul class="collapse">
-						                    <li><a href="#">Link</a></li>
-											<li><a href="#">Another link</a></li>
-											<li><a href="#">Some else here</a></li>
-											<li class="list-divider"></li>
-											<li><a href="#">Separate link</a></li>
-											
-						                </ul>
-						            </li>
-						
-						            <!--Menu list item-->
-						            <li>
-						                <a href="#">
-						                    <i class="pli-fuel"></i>
-						                    <span class="menu-title">
-												With label
-												<span class="label label-danger pull-right">Hot</span>
-											</span>
-						                </a>
-						
-						                <!--Submenu-->
-						                <ul class="collapse">
-						                    <li><a href="#">Link</a></li>
-											<li><a href="#">Another link</a></li>
-											<li><a href="#">Some else here</a></li>
-											<li class="list-divider"></li>
-											<li><a href="#">Separate link</a></li>
-											
-						                </ul>
-						            </li>
-						
-						            <!--Menu list item-->
-						            <li>
-						                <a href="#">
-						                    <i class="pli-cursor-click"></i>
-						                    <span class="menu-title">
-												With badge
-												<span class="pull-right badge badge-success">3</span>
-											</span>
-						                </a>
-						
-						                <!--Submenu-->
-						                <ul class="collapse">
-						                    <li><a href="#">Link</a></li>
-											<li><a href="#">Another link</a></li>
-											<li><a href="#">Some else here</a></li>
-											<li class="list-divider"></li>
-											<li><a href="#">Separate link</a></li>
-											
-						                </ul>
-						            </li>
-						
-						            <li class="list-divider"></li>
-						
-						            <!--Category name-->
-						            <li class="list-header">Multi level</li>
-
-                                    <!--Menu list item-->
-                                    <li>
-                                        <a href="#">
-                                            <i class="pli-geo-2-star"></i>
-                                            <span class="menu-title">Menu Level</span>
-                                            <i class="arrow"></i>
-                                        </a>
-
-                                        <!--Submenu-->
-                                        <ul class="collapse">
-                                            <li><a href="#">Second Level Item</a></li>
-                                            <li><a href="#">Second Level Item</a></li>
-                                            <li><a href="#">Second Level Item</a></li>
-                                            <li class="list-divider"></li>
-                                            <li>
-                                                <a href="#">Third Level<i class="arrow"></i></a>
-
-                                                <!--Submenu-->
-                                                <ul class="collapse">
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level<i class="arrow"></i></a>
-
-                                                <!--Submenu-->
-                                                <ul class="collapse">
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li class="list-divider"></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-
-
-                                <!--Widget-->
-                                <!--================================-->
-                                <div class="mainnav-widget">
-
-                                    <!-- Show the button on collapsed navigation -->
-                                    <div class="show-small">
-                                        <a href="#" data-toggle="menu-widget" data-target="#wg-server">
-                                            <i class="pli-monitor-2"></i>
-                                        </a>
-                                    </div>
-
-                                    <!-- Hide the content on collapsed navigation -->
-                                    <div id="wg-server" class="hide-small mainnav-widget-content">
-                                        <ul class="list-group">
-                                            <li class="list-header pad-no mar-ver">Server Status</li>
-                                            <li class="mar-btm">
-                                                <span class="label label-primary pull-right">15%</span>
-                                                <p>CPU Usage</p>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar progress-bar-primary" style="width: 15%;">
-                                                        <span class="sr-only">15%</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="mar-btm">
-                                                <span class="label label-purple pull-right">75%</span>
-                                                <p>Bandwidth</p>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar progress-bar-purple" style="width: 75%;">
-                                                        <span class="sr-only">75%</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="pad-ver"><a href="#" class="btn btn-success btn-bock">View Details</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--================================-->
-                                <!--End widget-->
-
+                                <!--End nav-menu-->
+                                @include('layouts.nav-menu')
+                                <!--End nav-menu-->
                             </div>
                         </div>
                     </div>
@@ -1010,7 +732,7 @@
             <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-            <p class="pad-lft">&#0169; MR. ROBOTO</p>
+            <p class="pad-lft">Copyright &#0169;  {{ date('Y') }} MR. ROBOTO</p>
 
 
 
